@@ -21,7 +21,6 @@ require 'childprocess'
 require 'selenium/webdriver/common/socket_poller'
 require 'net/http'
 
-
 module Selenium
   #
   # Wraps the remote server jar
