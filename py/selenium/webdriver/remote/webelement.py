@@ -709,7 +709,7 @@ class WebElement(BaseWebElement):
         params['id'] = self._id
         return self._parent.execute(command, params)
 
-    def find_element(self, by=By.ID, value=None):
+    def find_element(self, by: By = By.ID, value: str = None):
         """
         Find an element given a By strategy and locator.
 
@@ -732,10 +732,11 @@ class WebElement(BaseWebElement):
             by = By.CSS_SELECTOR
             value = '[name="%s"]' % value
 
-        return self._execute(Command.FIND_CHILD_ELEMENT,
-                             {"using": by, "value": value})['value']
+        return self._execute(
+            Command.FIND_CHILD_ELEMENT, {"using": by, "value": value}
+        )["value"]
 
-    def find_elements(self, by=By.ID, value=None):
+    def find_elements(self, by: By = By.ID, value: str = None):
         """
         Find elements given a By strategy and locator.
 
@@ -758,8 +759,9 @@ class WebElement(BaseWebElement):
             by = By.CSS_SELECTOR
             value = '[name="%s"]' % value
 
-        return self._execute(Command.FIND_CHILD_ELEMENTS,
-                             {"using": by, "value": value})['value']
+        return self._execute(
+            Command.FIND_CHILD_ELEMENTS, {"using": by, "value": value}
+        )["value"]
 
     def __hash__(self):
         return int(md5_hash(self._id.encode('utf-8')).hexdigest(), 16)
